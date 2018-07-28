@@ -1,0 +1,48 @@
+<!--pages/detail/detail.wxml-->
+<wxs module="utils">
+  function setWH( url ) {
+    // 在地址栏中 有一个 w.h 的字符串, 将其替换成 160.160
+    return url.replace( 'w', '160' ).replace( '.h', '.160' );
+  }
+  module.exports = {
+    setWH: setWH
+  };
+</wxs>
+<!-- 页面一开始的轮播图 -->
+<view>
+  <swiper class="swiper" indicator-dots="true" autoplay="true" circular="true">
+    <swiper-item wx:for="{{imgs}}" wx:key="*this">
+      <image src="{{item}}" data-src="{{item}}" bindtap="preview"></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<!-- 店铺信息 -->
+<view class="info">
+  <view class="p title">{{ detail.name }}</view>
+  <view class="p">电话: {{detail.phone}}</view>
+  <view class="p">地址: {{detail.address}}</view>
+  <view class="p">营业时间: {{detail.businessHours}}</view>
+</view>
+
+<!-- 评论数据 -->
+<view>
+  <view class="comments-item" wx:for="{{ detail.comments }}">
+    <!-- 标题: 用户名 评分与日期 -->
+    <view class="title">
+      <view class="left">{{ item.name }}</view>
+      <view class="right">
+        <view class="score">评分: {{ item.rating }}</view>
+        <view>{{ item.date }}</view>
+      </view>
+    </view>
+    <!-- 评论内容 -->
+    <view class="content">{{ item.content }}</view>
+    <!-- 上传图片 -->
+    <view class="imgs" wx:if="{{ item.images.length > 0 }}">
+      <image wx:for="{{ item.images }}" wx:for-item="v" src="{{ utils.setWH( v ) }}"></image>
+      <view class="clear"></view>
+    </view>
+  </view>
+
+</view>

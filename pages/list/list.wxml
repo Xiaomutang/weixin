@@ -1,0 +1,19 @@
+<!--pages/list/list.wxml-->
+<wxs src="./myfilter.wxs" module="myfilter"></wxs>
+<view>
+  <view class="list-item" wx:for="{{list}}" wx:key="id" bindtap="tapItem" data-id="{{item.id}}">
+    <view class="left">
+      <image mode="scaleToFill" src="{{item.images[ 0 ]}}"></image>
+    </view>
+    <view class="right">
+      <view class="p bold">名字: {{item.name}}</view>
+      <view class="p">电话: {{item.phone}}</view>
+      <view class="p">地址: {{ myfilter.setAddress( item.address ) }}</view> 
+      <view class="p">营业时间: {{item.businessHours}}</view>
+    </view>
+  </view>
+</view>
+<view class="load">
+  <image wx:if="{{hasData}}" src="/assets/images/generic_loading.svg"></image>
+  <text wx:else>已到底了</text>
+</view>

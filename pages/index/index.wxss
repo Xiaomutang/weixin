@@ -1,0 +1,40 @@
+/* 设置九宫格的样式 */
+.matrix {
+  width: 746rpx;
+  display: flex;
+  flex-wrap: wrap;
+  border-right: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
+}
+
+.matrix > view {
+  width: 246rpx;
+  height: 250rpx;
+  border-left: 1rpx solid #ccc;
+  border-top: 1rpx solid #ccc;
+}
+
+.matrix > view > navigator {
+  width: 248rpx;
+  height: 200rpx;
+  text-align: center;
+  padding-top: 50rpx;
+}
+
+.matrix image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.link {
+  display: flex;
+  height: 300rpx;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.link image {
+  width: 300rpx;
+  height: 160rpx;
+}
